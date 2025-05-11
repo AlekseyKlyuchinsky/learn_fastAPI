@@ -18,5 +18,10 @@ books = [
 ]
 
 
+@app.get('/books')
+def read_books():
+    return books
+
+
 if __name__ == '__main__':
     uvicorn.run('main:app', reload=True)
