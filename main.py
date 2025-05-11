@@ -18,17 +18,17 @@ books = [
 ]
 
 
-@app.get('/books')
+@app.get('/books', tags=['book'], summary='get all books')
 def read_books():
     return books
 
 
-@app.get('/books/{book_id}')
+@app.get('/books/{book_id}', tags=['book'], summary='get required book')
 def get_book(book_id: int):
     for book in books:
         if book['id'] == book_id:
             return book
-    raise HTTPException(status_code=404)
+    raise HTTPException(status_code=404, detail='Book is not found')
 
 
 if __name__ == '__main__':
